@@ -35,7 +35,7 @@ fudgeflix as (
   from {{ source('fudgeflix_v3', 'ff_account_billing') }} ab
 )
 
--- 3) Union both systems into one fact
+
 select * from fudgemart
 union all
 select * from fudgeflix
