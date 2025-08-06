@@ -8,13 +8,12 @@ models:
       with a synthetic surrogate key.
     columns:
       - name: customerkey
-        description: "Synthetic surrogate key for this dimension"
+        description: "Synthetic key: source_system||'_'||customerid"
         tests:
-          - unique
           - not_null
+          - unique
 
       - name: customerid
-        description: "Natural key from source (fm_customers.customer_id or ff_accounts.account_id)"
         tests:
           - not_null
 
