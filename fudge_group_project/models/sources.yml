@@ -1,0 +1,70 @@
+version: 2
+
+sources:
+  - name: fudgeflix
+    database: RAW
+    schema: FUDGEFLIX_V3
+    tables:
+      - name: FF_ACCOUNT_BILLING
+        columns:
+          - name: AB_ID
+            tests:
+              - not_null
+          - name: AB_DATE
+            tests:
+              - not_null
+          - name: AB_ACCOUNT_ID
+            tests:
+              - not_null
+          - name: AB_PLAN_ID
+          - name: AB_BILLED_AMOUNT
+
+  - name: fudgemart
+    database: RAW
+    schema: FUDGEMART_V3
+    tables:
+      - name: fm_customers
+        columns:
+          - name: customer_id
+            tests:
+              - unique
+              - not_null
+      - name: fm_orders
+        columns:
+          - name: order_id
+            tests:
+              - unique
+              - not_null
+      - name: fm_order_details
+        columns:
+          - name: order_id
+          - name: product_id
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+                - order_id
+                - product_id
+      - name: fm_products
+        columns:
+          - name: product_id
+            tests:
+              - unique
+              - not_null
+      - name: fm_employees
+        columns:
+          - name: employee_id
+            tests:
+              - unique
+              - not_null
+      - name: fm_vendors
+        columns:
+          - name: vendor_id
+            tests:
+              - unique
+              - not_null
+      - name: fm_departments_lookup
+        columns:
+          - name: department_id
+            tests:
+              - unique
+              - not_null
