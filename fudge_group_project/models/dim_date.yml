@@ -6,12 +6,14 @@ models:
     columns:
       - name: datekey
         data_type: int
-        description: The surrogate key of the date YYYYMMDD
+        description: The surrogate key of the date (YYYYMMDD)
         tests:
           - not_null
           - unique
+
       - name: date
-        description: The actual calendar date
+        description: The date of the date key
         tests:
           - not_null
           - unique
+
