@@ -2,40 +2,38 @@ version: 2
 
 models:
   - name: dim_customer
-    description: >
-      Unified dimension table of customers from both FudgeMart and FudgeFlix. 
-      Contains one row per customer per system (based on source_system).
+    description: |
+      Customer dimension combining FudgeMart and FudgeFlix.
+      Each row represents one unique customer or account,
+      with a synthetic surrogate key.
     columns:
-      - name: customer_key
-        description: Surrogate key generated using customer_id and source_system
+      - name: customerkey
+        description: "Synthetic surrogate key for this dimension"
         tests:
-          - not_null
           - unique
+          - not_null
 
-      - name: customer_id
-        description: Natural key from the source system (FM.customer_id or FF.account_id)
+      - name: customerid
+        description: "Natural key from source (fm_customers.customer_id or ff_accounts.account_id)"
         tests:
           - not_null
 
-      - name: first_name
-        description: Customer's first name
+      - name: customeremail
+        description: "Email address"
 
-      - name: last_name
-        description: Customer's last name
+      - name: customerfirstname
+        description: "First name"
 
-      - name: email
-        description: Customer email address
+      - name: customerlastname
+        description: "Last name"
 
-      - name: address
-        description: Customer street address
+      - name: customeraddress
+        description: "Street address"
 
-      - name: zipcode
-        description: Customer ZIP/postal code
-
-      - name: created_at
-        description: Timestamp the customer account was created (only available for FudgeMart)
+      - name: customerzip
+        description: "ZIP/postal code"
 
       - name: source_system
-        description: Source system of the customer data (either "fudgemart" or "fudgeflix")
+        description: "Source identifier: 'fudgemart' or 'fudgeflix'"
         tests:
           - not_null

@@ -4,11 +4,11 @@ config-version: 2
 
 profile: 'fudge_group_project'
 
-model-paths: ["models"]
+model-paths:    ["models"]
 analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
-macro-paths: ["macros"]
+test-paths:     ["tests"]
+seed-paths:     ["seeds"]
+macro-paths:    ["macros"]
 snapshot-paths: ["snapshots"]
 
 target-path: "target"
@@ -16,16 +16,9 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-# Global model config
 models:
+  # this key must exactly match your project name
   fudge_group_project:
-    +materialized: table
-    database: analytics
-    +schema: FUDGECOMPANIES
-    +custom_schema: ""
-
-    fudgemart:
-      +materialized: table
-
-    fudgeflix:
-      +materialized: table
+    +materialized: table       # default materialization
+    database: analytics        # target database in Snowflake
+    +schema: FUDGECOMPANIES    # target schema in Snowflake

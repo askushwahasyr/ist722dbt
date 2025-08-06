@@ -1,43 +1,24 @@
-
 version: 2
 
 sources:
-  - name: conformed
-    database: raw
-    schema: conformed
-    tables:
-      - name: DateDimension
 
-  - name: fudgeflix
+  # 1) conform ed date dimension
+  - name: conformed                # this is what you call in your dim_date.sql
+    database: raw                  # RAW database in Snowflake
+    schema: conformed              # RAW.CONFORMED schema
+    tables:
+      - name: DateDimension        # RAW.CONFORMED.DateDimension
+
+  # 2) FudgeFlix
+  - name: fudgeflix_v3
     database: raw
     schema: fudgeflix_v3
     tables:
-      - name: FF_ACCOUNTS
-      - name: FF_ACCOUNT_BILLING
-      - name: FF_ACCOUNT_TITLES
-      - name: FF_TITLES
-      - name: FF_CAST
-      - name: FF_DIRECTORS
-      - name: FF_PEOPLE
-      - name: FF_TITLE_GENRES
-      - name: FF_GENRES
-      - name: FF_PLANS
-      - name: FF_ZIPCODES
+      - name: ff_accounts
 
-  - name: fudgemart
+  # 3) FudgeMart
+  - name: fudgemart_v3
     database: raw
     schema: fudgemart_v3
     tables:
-      - name: FM_CUSTOMERS
-      - name: FM_ORDERS
-      - name: FM_ORDER_DETAILS
-      - name: FM_PRODUCTS
-      - name: FM_EMPLOYEES
-      - name: FM_EMPLOYEE_TIMESHEETS
-      - name: FM_CREDITCARDS
-      - name: FM_CUSTOMER_CREDITCARDS
-      - name: FM_CUSTOMER_PRODUCT_REVIEWS
-      - name: FM_DEPARTMENTS_LOOKUP
-      - name: FM_JOBTITLES_LOOKUP
-      - name: FM_VENDORS
-      - name: FM_SHIPVIA_LOOKUP
+      - name: fm_customers
