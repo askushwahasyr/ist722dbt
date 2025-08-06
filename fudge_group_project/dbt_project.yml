@@ -1,14 +1,13 @@
-
-name: 'fudge_warehouse'
+name: 'fudge_group_project'
 version: '1.0.0'
 config-version: 2
 
-profile: 'fudge_warehouse'
+profile: 'fudge_group_project'
 
 model-paths: ["models"]
-analysis-paths: ["analysis"]
+analysis-paths: ["analyses"]
 test-paths: ["tests"]
-data-paths: ["data"]
+seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
@@ -18,8 +17,8 @@ clean-targets:
   - "dbt_packages"
 
 models:
-  fudge_warehouse:
-    +materialized: view  # default for any models not overridden
+  fudge_group_project:
+    +materialized: view
 
     fudgemart:
       +materialized: table
