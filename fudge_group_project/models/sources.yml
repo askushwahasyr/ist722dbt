@@ -2,14 +2,14 @@ version: 2
 
 sources:
 
-  # 1) conformed date dimension
+  # conformed date dimension
   - name: conformed               # referenced by dim_date.sql
     database: raw                 # RAW database in Snowflake
     schema: conformed             # RAW.CONFORMED schema
     tables:
       - name: DateDimension       # RAW.CONFORMED.DateDimension
 
-  # 2) FudgeFlix
+  # FudgeFlix
   - name: fudgeflix_v3
     database: raw
     schema: fudgeflix_v3
@@ -18,7 +18,7 @@ sources:
       - name: ff_plans            # RAW.FUDGEFLIX_V3.FF_PLANS
       - name: ff_account_billing  # RAW.FUDGEFLIX_V3.FF_ACCOUNT_BILLING
 
-  # 3) FudgeMart
+  # FudgeMart
   - name: fudgemart_v3
     database: raw
     schema: fudgemart_v3

@@ -1,6 +1,6 @@
 {{ config(materialized='table') }}
 
--- 1) FudgeMart sales: one row per order‐detail
+-- FudgeMart sales: one row per order‐detail
 with fudgemart as (
   select
     concat('fudgemart_', to_varchar(o.order_id), '_', to_varchar(od.product_id)) as orderid,
@@ -17,7 +17,7 @@ with fudgemart as (
     on od.product_id = p.product_id
 ),
 
--- 2) FudgeFlix billing: one row per billing record
+-- FudgeFlix billing: one row per billing record
 fudgeflix as (
   select
     concat(

@@ -18,7 +18,6 @@ with
   )
 
 select
-  -- fact keys & measures
   f.orderid,
   f.datekey           as orderdatekey,
   f.customerkey,
@@ -27,17 +26,14 @@ select
   f.revenue,
   f.division,
 
-  -- only the date column you have
   d_date.date         as orderdate,
 
-  -- customer attributes
   d_customer.customeremail,
   d_customer.customerfirstname,
   d_customer.customerlastname,
   d_customer.customeraddress,
   d_customer.customerzip,
 
-  -- product attributes
   d_product.productname
 
 from f

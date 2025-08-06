@@ -31,7 +31,6 @@ stg_customers as (
 )
 
 select
-  -- simple string key: "fudgemart_123" or "fudgeflix_456"
   concat(source_system, '_', customerid) as customerkey,
 
   customerid,
