@@ -16,16 +16,16 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
+# Global model config
 models:
   fudge_group_project:
-    +materialized: view
+    +materialized: table
+    database: analytics
+    +schema: FUDGECOMPANIES
+    +custom_schema: ""
 
     fudgemart:
       +materialized: table
-      database: analytics
-      +schema: fudgemart_v3
 
     fudgeflix:
       +materialized: table
-      database: analytics
-      +schema: fudgeflix_v3

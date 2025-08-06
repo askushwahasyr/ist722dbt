@@ -1,70 +1,43 @@
+
 version: 2
 
 sources:
-  - name: fudgeflix
-    database: RAW
-    schema: FUDGEFLIX_V3
+  - name: conformed
+    database: raw
+    schema: conformed
     tables:
+      - name: DateDimension
+
+  - name: fudgeflix
+    database: raw
+    schema: fudgeflix_v3
+    tables:
+      - name: FF_ACCOUNTS
       - name: FF_ACCOUNT_BILLING
-        columns:
-          - name: AB_ID
-            tests:
-              - not_null
-          - name: AB_DATE
-            tests:
-              - not_null
-          - name: AB_ACCOUNT_ID
-            tests:
-              - not_null
-          - name: AB_PLAN_ID
-          - name: AB_BILLED_AMOUNT
+      - name: FF_ACCOUNT_TITLES
+      - name: FF_TITLES
+      - name: FF_CAST
+      - name: FF_DIRECTORS
+      - name: FF_PEOPLE
+      - name: FF_TITLE_GENRES
+      - name: FF_GENRES
+      - name: FF_PLANS
+      - name: FF_ZIPCODES
 
   - name: fudgemart
-    database: RAW
-    schema: FUDGEMART_V3
+    database: raw
+    schema: fudgemart_v3
     tables:
-      - name: fm_customers
-        columns:
-          - name: customer_id
-            tests:
-              - unique
-              - not_null
-      - name: fm_orders
-        columns:
-          - name: order_id
-            tests:
-              - unique
-              - not_null
-      - name: fm_order_details
-        columns:
-          - name: order_id
-          - name: product_id
-        tests:
-          - dbt_utils.unique_combination_of_columns:
-              combination_of_columns:
-                - order_id
-                - product_id
-      - name: fm_products
-        columns:
-          - name: product_id
-            tests:
-              - unique
-              - not_null
-      - name: fm_employees
-        columns:
-          - name: employee_id
-            tests:
-              - unique
-              - not_null
-      - name: fm_vendors
-        columns:
-          - name: vendor_id
-            tests:
-              - unique
-              - not_null
-      - name: fm_departments_lookup
-        columns:
-          - name: department_id
-            tests:
-              - unique
-              - not_null
+      - name: FM_CUSTOMERS
+      - name: FM_ORDERS
+      - name: FM_ORDER_DETAILS
+      - name: FM_PRODUCTS
+      - name: FM_EMPLOYEES
+      - name: FM_EMPLOYEE_TIMESHEETS
+      - name: FM_CREDITCARDS
+      - name: FM_CUSTOMER_CREDITCARDS
+      - name: FM_CUSTOMER_PRODUCT_REVIEWS
+      - name: FM_DEPARTMENTS_LOOKUP
+      - name: FM_JOBTITLES_LOOKUP
+      - name: FM_VENDORS
+      - name: FM_SHIPVIA_LOOKUP
