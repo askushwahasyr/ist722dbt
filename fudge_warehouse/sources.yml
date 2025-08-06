@@ -1,0 +1,10 @@
+sources:
+  - name: fudgemart_v3
+    database: raw
+    schema: fudgemart_v3
+  - name: fudgeflix_v3
+    database: raw
+    schema: fudgeflix_v3
+  - name: conformed
+    database: raw
+    schema: conformed
