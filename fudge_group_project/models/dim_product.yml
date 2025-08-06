@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: |
+      Product dimension combining FudgeMart products
+      and FudgeFlix subscription plans.
+      One row = one product (from FudgeMart)
+      or plan (from FudgeFlix).
+    columns:
+      - name: productkey
+        description: "Synthetic surrogate key for dim_product"
+        tests:
+          - unique
+          - not_null
+
+      - name: productid
+        description: "Natural key from source (fm_products.product_id or ff_plans.plan_id)"
+        tests:
+          - unique
+          - not_null
+
+      - name: productname
+        description: "Name of the product or plan"
+
+      - name: source_system
+        description: "Source indicator: 'fudgemart' or 'fudgeflix'"
+        tests:
+          - not_null

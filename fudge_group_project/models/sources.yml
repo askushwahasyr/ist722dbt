@@ -14,11 +14,13 @@ sources:
     database: raw
     schema: fudgeflix_v3
     tables:
-      - name: ff_accounts
+      - name: ff_accounts     # RAW.FUDGEFLIX_V3.FF_ACCOUNTS
+      - name: ff_plans        # RAW.FUDGEFLIX_V3.FF_PLANS
 
   # 3) FudgeMart
   - name: fudgemart_v3
     database: raw
     schema: fudgemart_v3
     tables:
-      - name: fm_customers
+      - name: fm_customers    # RAW.FUDGEMART_V3.FM_CUSTOMERS
+      - name: fm_products     # RAW.FUDGEMART_V3.FM_PRODUCTS
