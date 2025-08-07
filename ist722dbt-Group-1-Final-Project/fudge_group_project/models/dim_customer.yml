@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: |
+      Customer dimension combining FudgeMart and FudgeFlix.
+      Each row represents one unique customer or account,
+      with a synthetic surrogate key.
+    columns:
+      - name: customerkey
+        description: "Synthetic key: source_system||'_'||customerid"
+        tests:
+          - not_null
+          - unique
+
+      - name: customerid
+        tests:
+          - not_null
+
+      - name: customeremail
+        description: "Email address"
+
+      - name: customerfirstname
+        description: "First name"
+
+      - name: customerlastname
+        description: "Last name"
+
+      - name: customeraddress
+        description: "Street address"
+
+      - name: customerzip
+        description: "ZIP/postal code"
+
+      - name: source_system
+        description: "Source identifier: 'fudgemart' or 'fudgeflix'"
+        tests:
+          - not_null

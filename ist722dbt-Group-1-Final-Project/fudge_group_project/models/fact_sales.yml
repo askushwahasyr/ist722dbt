@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: fact_sales
+    description: |
+      Sales fact: one row per product‐line item (FudgeMart orders)
+      or per billing event (FudgeFlix subscriptions).
+      Grain = product × order for FudgeMart, billing event for FudgeFlix.
+    columns:
+      - name: orderid
+        description: "Surrogate key: concat(source_system,'_',order+product IDs or billing IDs)"
+        tests:
+          - unique
+          - not_null
+
+      - name: datekey
+        description: "Order or billing date key (FK → dim_date.datekey)"
+        tests:
+          - not_null
+
+      - name: customerkey
+        description: "Customer dimension key (FK → dim_customer.customerkey)"
+        tests:
+          - not_null
+
+      - name: productkey
+        description: "Product dimension key (FK → dim_product.productkey)"
+        tests:
+          - not_null
+
+      - name: quantity
+        description: "Qty sold (order_qty for FudgeMart, 1 per billing for FudgeFlix)"
+
+      - name: revenue
+        description: "Line‐item revenue (qty×unit_price or billed_amount)"
+
+      - name: division
+        description: "Source system: 'fudgemart' or 'fudgeflix'"
+        tests:
+          - not_null
